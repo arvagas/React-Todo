@@ -6,9 +6,16 @@ import Todo from './Todo'
 
 import { StyledList } from '../../StyledComp'
 
-const TodoList = ({ dummyData, toggleItem }) => {
+const TodoList = ({ dummyData, toggleItem, searchData }) => {
     
-    return (
+    if (searchData !== null) return (
+        <StyledList>
+            {searchData.map(item => (
+                <Todo key={item.id} item={item} toggleItem={toggleItem}/>
+            ))}
+        </StyledList>
+    )
+    else return (
         <StyledList>
             {dummyData.map(item => (
                 <Todo key={item.id} item={item} toggleItem={toggleItem}/>

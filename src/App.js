@@ -15,7 +15,8 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      dummyData
+      dummyData: dummyData,
+      searchData: null,
     }
   }
 
@@ -27,8 +28,19 @@ class App extends React.Component {
           else return {...item, completed: false}
         }
         else return item
-      })
+      }),
     })
+    if (this.state.searchData !== null) {
+      this.setState({
+        searchData: this.state.searchData.map(item => {
+          if (item.id === id) {
+            if (item.completed === false) return {...item, completed: true}
+            else return {...item, completed: false}
+          }
+          else return item
+        })
+      })
+    }
   }
 
   addItem = taskName => {
@@ -38,19 +50,22 @@ class App extends React.Component {
       completed: false,
     }
     this.setState({
-      dummyData: [...this.state.dummyData, newTask]
+      dummyData: [...this.state.dummyData, newTask],
+      searchData: [...this.state.searchData, newTask]
     })
   }
 
   clearCompItems = () => {
     this.setState({
-      dummyData: this.state.dummyData.filter(item => !item.completed)
+      dummyData: this.state.dummyData.filter(item => !item.completed),
+      searchData: this.state.searchData.filter(item => !item.completed)
     })
   }
 
   searchItems = searchName => {
-    this.setState({
-      dummyData: this.state.dummyData.filter(item => {
+    if (searchName === '') this.setState({searchData: null})
+    else this.setState({
+      searchData: this.state.dummyData.filter(item => {
         if (item.task.toLowerCase().includes(searchName.toLowerCase())) return [...this.state.dummyData, item]
       })
     })
@@ -61,7 +76,7 @@ class App extends React.Component {
       <StyledContainer>
         <h2>Welcome to your Todo App!</h2>
         <SearchForm searchItems={this.searchItems}/>
-        <TodoList dummyData={this.state.dummyData} toggleItem={this.toggleItem}/>
+        <TodoList dummyData={this.state.dummyData} toggleItem={this.toggleItem} searchData={this.state.searchData}/>
         <TodoForm addItem={this.addItem} clearCompItems={this.clearCompItems}/>
       </StyledContainer>
     );

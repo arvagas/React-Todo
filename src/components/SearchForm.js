@@ -22,7 +22,6 @@ class SearchForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.searchList}>
-            {/* <form> */}
                 <input
                     type='text'
                     placeholder='Search list for...'
