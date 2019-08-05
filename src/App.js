@@ -50,16 +50,24 @@ class App extends React.Component {
       completed: false,
     }
     this.setState({
-      dummyData: [...this.state.dummyData, newTask],
-      searchData: [...this.state.searchData, newTask]
+      dummyData: [...this.state.dummyData, newTask]
     })
+    if (this.state.searchData !== null) {
+      this.setState({
+        searchData: [...this.state.searchData, newTask]
+      })
+    }
   }
 
   clearCompItems = () => {
     this.setState({
-      dummyData: this.state.dummyData.filter(item => !item.completed),
-      searchData: this.state.searchData.filter(item => !item.completed)
+      dummyData: this.state.dummyData.filter(item => !item.completed)
     })
+    if (this.state.searchData !== null) {
+      this.setState({
+        searchData: this.state.searchData.filter(item => !item.completed)
+      })
+    }
   }
 
   searchItems = searchName => {
