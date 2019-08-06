@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { StyledForm, FormButtonContainer } from '../../StyledComp'
+import { StyledTodoForm, TodoFormButtonContainer } from '../../StyledComp'
 
 class TodoForm extends React.Component {
     constructor() {
@@ -29,7 +29,7 @@ class TodoForm extends React.Component {
 
     render() {
         return (
-            <StyledForm>
+            <StyledTodoForm>
                 <input
                     type='text'
                     placeholder='Add new task:'
@@ -38,11 +38,11 @@ class TodoForm extends React.Component {
                     onChange={this.handleChanges}
                     ref={el => {this.addInput = el}}
                 />
-                <FormButtonContainer>
+                <TodoFormButtonContainer>
                     <button onClick={this.addNewTodo}>Add Todo</button>
                     <button onClick={this.clearFinished}>Clear Completed</button>
-                </FormButtonContainer>
-            </StyledForm>
+                </TodoFormButtonContainer>
+            </StyledTodoForm>
         )
     }
 }

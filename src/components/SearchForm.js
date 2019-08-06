@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { StyledSearchForm } from '../StyledComp'
+
 class SearchForm extends React.Component {
     constructor() {
         super()
@@ -21,7 +23,7 @@ class SearchForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.searchList}>
+            <StyledSearchForm onSubmit={this.searchList}>
                 <input
                     type='text'
                     placeholder='Search list for...'
@@ -30,7 +32,7 @@ class SearchForm extends React.Component {
                     onChange={this.handleChanges}
                 />
                 <button type="submit">Search</button>
-            </form>
+            </StyledSearchForm>
         )
     }
 }
