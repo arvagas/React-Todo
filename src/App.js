@@ -52,11 +52,11 @@ class App extends React.Component {
     this.setState({
       dummyData: [...this.state.dummyData, newTask]
     })
-    if (this.state.searchData !== null) {
-      this.setState({
-        searchData: [...this.state.searchData, newTask]
-      })
-    }
+    // if (this.state.searchData !== null) {
+    //   this.setState({
+    //     searchData: [...this.state.searchData, newTask]
+    //   })
+    // }
   }
 
   clearCompItems = () => {

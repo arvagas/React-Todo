@@ -19,6 +19,7 @@ class TodoForm extends React.Component {
     addNewTodo = event => {
         event.preventDefault()
         this.props.addItem(this.state.item)
+        this.addInput.value = ''
     }
 
     clearFinished = event => {
@@ -35,6 +36,7 @@ class TodoForm extends React.Component {
                     value={this.item}
                     name='item'
                     onChange={this.handleChanges}
+                    ref={el => {this.addInput = el}}
                 />
                 <FormButtonContainer>
                     <button onClick={this.addNewTodo}>Add Todo</button>
