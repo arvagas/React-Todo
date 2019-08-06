@@ -8,16 +8,19 @@ import { StyledList } from '../../StyledComp'
 
 const TodoList = ({ dummyData, toggleItem, searchData }) => {
     
-    if (searchData !== null) return (
+    if (searchData === null) { 
+        if (dummyData.length === 0) return <p>Add a task to your todo list!</p>
+        else return (
         <StyledList>
-            {searchData.map(item => (
+            {dummyData.map(item => (
                 <Todo key={item.id} item={item} toggleItem={toggleItem}/>
             ))}
         </StyledList>
-    )
+        )
+    }
     else return (
         <StyledList>
-            {dummyData.map(item => (
+            {searchData.map(item => (
                 <Todo key={item.id} item={item} toggleItem={toggleItem}/>
             ))}
         </StyledList>
