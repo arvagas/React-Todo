@@ -18,8 +18,10 @@ class TodoForm extends React.Component {
 
     addNewTodo = event => {
         event.preventDefault()
-        this.props.addItem(this.state.item)
-        this.addInput.value = ''
+        if (this.state.item !== '') {
+            this.props.addItem(this.state.item)
+            this.addInput.value = ''
+        }
     }
 
     clearFinished = event => {
